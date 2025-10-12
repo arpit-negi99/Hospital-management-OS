@@ -1,0 +1,6 @@
+patient_id,age,heart_rate,blood_pressure_systolic,blood_pressure_diastolic,temperature,respiratory_rate,oxygen_saturation,pain_level,chest_pain,breathing_difficulty,consciousness_level,bleeding_severity,priority,emergency_level
+1,65,140,190.0,110.0,39.5,32,85,9,5,4,2,3,1,CRITICAL
+2,45,110,160.0,95.0,38.2,25,92,7,3,3,4,2,2,HIGH
+3,35,90,130.0,85.0,37.2,20,96,5,2,1,5,1,3,MEDIUM
+4,28,75,120.0,80.0,36.8,16,98,3,1,0,5,0,4,LOW
+5,42,88,125.0,82.0,37.0,18,97,4,2,1,4,1,3,MEDIUM

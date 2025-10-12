@@ -1,0 +1,284 @@
+/* Hospital OS Management System Styles */
+
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.section {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    transition: box-shadow 0.15s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    font-weight: 600;
+}
+
+/* Priority badges */
+.priority-critical {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.priority-high {
+    background-color: var(--warning-color);
+    color: var(--dark-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.priority-medium {
+    background-color: var(--info-color);
+    color: var(--dark-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.priority-low {
+    background-color: var(--success-color);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+/* Patient queue styling */
+.patient-card {
+    border-left: 4px solid #ddd;
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+.patient-card:hover {
+    transform: translateX(5px);
+}
+
+.patient-card.critical {
+    border-left-color: var(--danger-color);
+    background-color: rgba(220, 53, 69, 0.05);
+}
+
+.patient-card.high {
+    border-left-color: var(--warning-color);
+    background-color: rgba(255, 193, 7, 0.05);
+}
+
+.patient-card.medium {
+    border-left-color: var(--info-color);
+    background-color: rgba(13, 202, 240, 0.05);
+}
+
+.patient-card.low {
+    border-left-color: var(--success-color);
+    background-color: rgba(25, 135, 84, 0.05);
+}
+
+/* Vital signs display */
+.vital-sign {
+    display: inline-block;
+    margin: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    background-color: var(--light-color);
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.vital-sign.critical {
+    background-color: rgba(220, 53, 69, 0.1);
+    border: 1px solid var(--danger-color);
+}
+
+.vital-sign.warning {
+    background-color: rgba(255, 193, 7, 0.1);
+    border: 1px solid var(--warning-color);
+}
+
+.vital-sign.normal {
+    background-color: rgba(25, 135, 84, 0.1);
+    border: 1px solid var(--success-color);
+}
+
+/* Form styling */
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.btn {
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+/* Stats cards */
+.stats-card {
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.stats-card h3 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* Navigation */
+.nav-link {
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    .stats-card h3 {
+        font-size: 2rem;
+    }
+}
+
+/* Loading spinner */
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Prediction result styling */
+.prediction-result {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.prediction-result.critical {
+    background-color: rgba(220, 53, 69, 0.1);
+    border: 2px solid var(--danger-color);
+}
+
+.prediction-result.high {
+    background-color: rgba(255, 193, 7, 0.1);
+    border: 2px solid var(--warning-color);
+}
+
+.prediction-result.medium {
+    background-color: rgba(13, 202, 240, 0.1);
+    border: 2px solid var(--info-color);
+}
+
+.prediction-result.low {
+    background-color: rgba(25, 135, 84, 0.1);
+    border: 2px solid var(--success-color);
+}
+
+/* Simulation results */
+.simulation-metric {
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--light-color);
+    border-radius: 0.5rem;
+}
+
+.simulation-metric h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.simulation-metric p {
+    color: var(--secondary-color);
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+/* Activity feed */
+.activity-item {
+    padding: 0.75rem;
+    border-left: 3px solid var(--primary-color);
+    margin-bottom: 0.5rem;
+    background-color: white;
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.activity-item .time {
+    font-size: 0.75rem;
+    color: var(--secondary-color);
+}
+
+.activity-item .message {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
