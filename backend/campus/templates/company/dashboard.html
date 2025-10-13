@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Company Dashboard{% endblock %}
+{% block content %}
+<h3 class="mb-3">{{ company.name }}</h3>
+<a class="btn btn-primary mb-3" href="{{ url_for('company_new_internship') }}">Post Internship</a>
+<div class="card">
+  <div class="card-header">Your Internships</div>
+  <div class="card-body">
+    {% if internships %}
+      {% for i in internships %}
+        <div class="border rounded p-3 mb-2">
+          <h5 class="mb-1">{{ i.title }}</h5>
+          <p class="mb-1">{{ i.description[:200] }}{% if i.description|length>200 %}...{% endif %}</p>
+          <div class="mb-2">
+            {% for s in i.skills %}
+              <span class="badge text-bg-light border">{{ s.name }}</span>
+            {% endfor %}
+          </div>
+          <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('company_candidates') }}?skill_ids={% for s in i.skills %}{{ s.id }}{% if not loop.last %},{% endif %}{% endfor %}">View Candidates</a>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p class="text-muted">No internships yet.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

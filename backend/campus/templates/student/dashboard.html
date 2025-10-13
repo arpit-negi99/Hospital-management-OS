@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}Student Dashboard{% endblock %}
+{% block content %}
+<h3 class="mb-3">Welcome, {{ profile.name }}</h3>
+<div class="row">
+  <div class="col-md-8">
+    <div class="card mb-3">
+      <div class="card-header">Recommended Internships</div>
+      <div class="card-body">
+        {% if recommendations %}
+          {% for item in recommendations %}
+            <div class="border rounded p-3 mb-2">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <h5 class="mb-1">{{ item.internship.title }}</h5>
+                  <small class="text-muted">{{ item.internship.company.name }} · {{ item.match_pct }}% match</small>
+                </div>
+                <div>
+                  {% if item.internship.id in applied_ids %}
+                    <span class="badge bg-secondary">Applied</span>
+                  {% else %}
+                    <form method="post" action="{{ url_for('student_apply', internship_id=item.internship.id) }}">
+                      <button class="btn btn-sm btn-primary">Apply</button>
+                    </form>
+                  {% endif %}
+                </div>
+              </div>
+              <p class="mt-2 mb-0">{{ item.internship.description[:200] }}{% if item.internship.description|length > 200 %}...{% endif %}</p>
+              <div class="mt-2">
+                {% for s in item.internship.skills %}
+                  <span class="badge text-bg-light border">{{ s.name }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="text-muted">No internships yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">Profile</div>
+      <div class="card-body">
+        <p class="mb-1"><strong>Department:</strong> {{ profile.department }}</p>
+        <p class="mb-1"><strong>Year:</strong> {{ profile.year }}</p>
+        <p class="mb-1"><strong>GPA:</strong> {{ profile.gpa or '-' }}</p>
+        <div class="mt-2">
+          {% for s in profile.skills %}
+            <span class="badge bg-info me-1 mb-1">{{ s.name }}</span>
+          {% endfor %}
+        </div>
+        <a class="btn btn-sm btn-outline-primary mt-3" href="{{ url_for('student_profile') }}">Edit Profile</a>
+      </div>
+    </div>
+    <div class="card mt-3">
+      <div class="card-header">My Applications</div>
+      <div class="card-body">
+        {% if my_apps %}
+          {% for a in my_apps %}
+            <div class="d-flex justify-content-between border-bottom py-2">
+              <div>
+                <div class="fw-semibold">{{ a.internship.title }}</div>
+                <small class="text-muted">{{ a.internship.company.name }}</small>
+              </div>
+              <span class="badge bg-{{ 'success' if a.status=='hired' else ('warning' if a.status=='shortlisted' else ('secondary' if a.status=='applied' else 'danger')) }}">{{ a.status|title }}</span>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="text-muted mb-0">No applications yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<h3 class="mb-3">Placement Cell Analytics</h3>
+<div class="row">
+  <div class="col-md-3">
+    <div class="card text-center"><div class="card-body">
+      <div class="display-6">{{ stats.num_students }}</div>
+      <div class="text-muted">Students</div>
+    </div></div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-center"><div class="card-body">
+      <div class="display-6">{{ stats.num_companies }}</div>
+      <div class="text-muted">Companies</div>
+    </div></div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-center"><div class="card-body">
+      <div class="display-6">{{ stats.num_internships }}</div>
+      <div class="text-muted">Internships</div>
+    </div></div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-center"><div class="card-body">
+      <div class="display-6">{{ stats.num_applications }}</div>
+      <div class="text-muted">Applications</div>
+    </div></div>
+  </div>
+</div>
+
+<div class="card mt-3">
+  <div class="card-header">Top Skills (by student count)</div>
+  <div class="card-body">
+    {% if top_skills %}
+      <ul class="mb-0">
+        {% for name, count in top_skills %}
+          <li>{{ name }} — {{ count }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-muted">No skill data yet.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

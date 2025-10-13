@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Welcome · Campus Tracker{% endblock %}
+{% block content %}
+<div class="row align-items-center">
+  <div class="col-md-6">
+    <h1 class="mb-3">Campus Internship & Skill Tracker</h1>
+    <p class="text-muted">Connect students, companies, and placement cells. Post internships, showcase skills, and get smart recommendations.</p>
+    <a class="btn btn-primary me-2" href="{{ url_for('login') }}">Get Started</a>
+  </div>
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5>Highlights</h5>
+        <ul class="mb-0">
+          <li>Student profiles and skills</li>
+          <li>Company internship postings</li>
+          <li>Recommendations by skill match</li>
+          <li>Admin analytics and reports</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

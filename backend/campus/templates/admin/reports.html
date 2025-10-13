@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Reports{% endblock %}
+{% block content %}
+<h3 class="mb-3">Reports</h3>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card mb-3">
+      <div class="card-header">Applications by Status</div>
+      <div class="card-body">
+        {% if status_counts %}
+          <ul class="mb-0">
+            {% for status, count in status_counts.items() %}
+              <li>{{ status|title }} — {{ count }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="text-muted mb-0">No applications yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card mb-3">
+      <div class="card-header">Popular Internship Skills</div>
+      <div class="card-body">
+        {% if popular_intern_skills %}
+          <ul class="mb-0">
+            {% for name, count in popular_intern_skills %}
+              <li>{{ name }} — {{ count }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="text-muted mb-0">No internships yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">Top Students by Hires</div>
+  <div class="card-body">
+    {% if top_students %}
+      <ul class="mb-0">
+        {% for student, cnt in top_students %}
+          <li>{{ student.name }} — {{ cnt }} hired</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-muted mb-0">No hires yet.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
